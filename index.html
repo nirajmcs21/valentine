@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Swapnil ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff0f3;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        #mainContent h1 {
+            color: #ff4d6d;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+        }
+
+        button {
+            padding: 15px 45px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            z-index: 10;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            background-color: #ff758f;
+        }
+
+        #noBtn {
+            background-color: #adb5bd;
+            color: white;
+            position: relative;
+            transition: all 0.15s ease-out;
+        }
+
+        /* Success Screen Styles */
+        #successMessage {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        #successMessage h2 {
+            color: #c9184a;
+            font-size: 3.5rem;
+            margin-top: 20px;
+        }
+
+        .couple-img {
+            width: 700px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mainContent">
+        <h1>Swapnil, will you be my Valentine? 🌹</h1>
+        <div class="button-group">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div id="successMessage">
+        <img src="IMG_1985.JPG" 
+             alt="Valentine Image" 
+             class="couple-img">
+        <h2>It's a date then! ❤️</h2>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const mainContent = document.getElementById('mainContent');
+        const successMessage = document.getElementById('successMessage');
+
+        // Logic to make the 'No' button run away
+        const moveButton = () => {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+
+            // Random coordinates anywhere on the screen
+            const newX = Math.floor(Math.random() * maxX);
+            const newY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${newX}px`;
+            noBtn.style.top = `${newY}px`;
+        };
+
+        // Triggers when mouse hovers over 'No'
+        noBtn.addEventListener('mouseover', moveButton);
+        
+        // Also triggers on click (for mobile or fast clickers)
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // When she clicks 'Yes'
+        yesBtn.addEventListener('click', () => {
+            mainContent.style.display = 'none';
+            successMessage.style.display = 'flex';
+            document.body.style.backgroundColor = "#ffccd5";
+        });
+    </script>
+</body>
+</html>
